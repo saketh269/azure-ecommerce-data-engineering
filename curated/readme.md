@@ -8,8 +8,8 @@ dimensional modeling principles (star schema).
 
 ## Fact Tables
 - `fact_orders` – Core sales and revenue analytics at order-item grain
-- - `fact_sales` – Core sales and revenue analytics at order-item grain
-  - - `fact_promotions` – Core sales and revenue analytics at order-item grain
+- `fact_sales` – Core sales and revenue analytics at order-item grain
+-`fact_competitor_prices` – Core sales and revenue analytics at order-item grain
 
 ## Dimension Tables
 - `dim_customers`
