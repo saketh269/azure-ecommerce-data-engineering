@@ -1,7 +1,7 @@
 # Spark SQL Scripts
 
-This folder contains Spark SQL scripts used to build
-curated fact and dimension tables.
+This folder contains Spark SQL scripts used to build curated fact and dimension tables.
+
 Note: The SQL scripts in this folder represent the logic executed in Databricks to produce curated Delta tables.
 
 
