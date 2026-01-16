@@ -10,5 +10,9 @@ These scripts:
 - Produce Delta tables for BI consumption
 
 Example outputs:
-- `curated.fact_sales`
-- `curated.dim_customer`
+
+- `curated.fact_orders`
+- `curated.fact_competitor_prices`
+- `curated.dim_customers`
+- `curated.dim_products`
+- `curated.dim_promotion`
