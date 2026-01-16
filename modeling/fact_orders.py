@@ -1,3 +1,9 @@
+staging_orders_path = "abfss://datalake@ecommercedatalake01.dfs.core.windows.net/staging/orders"
+analytics_fact_orders_path = "abfss://datalake@ecommercedatalake01.dfs.core.windows.net/analytics/fact_orders"
+
+df_stg_orders = spark.read.format("delta").load(staging_orders_path)
+df_stg_orders.printSchema()
+
 from pyspark.sql.functions import (
     col, lit, current_timestamp, lower,
     year, month, dayofmonth
@@ -34,3 +40,7 @@ df_fact_orders = (
         "load_ts"
     )
 )
+df_fact_orders.write \
+    .format("delta") \
+    .mode("overwrite") \
+    .save(analytics_fact_orders_path)
