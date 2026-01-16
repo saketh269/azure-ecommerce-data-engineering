@@ -21,6 +21,16 @@ Key outcomes:
 
 ---
 
+## Project Flow (End-to-End)
+
+1. Source data is ingested using Azure Data Factory into the Raw (Bronze) layer in ADLS Gen2.
+2. Data is cleaned, standardized, and validated in Databricks using Spark SQL (Silver layer).
+3. Analytics-ready fact and dimension tables are created in the Curated (Gold) layer using Delta Lake.
+4. Curated datasets are consumed via SQL queries and Power BI for reporting and analysis.
+
+
+---
+
 ## 🏗️ Architecture
 **Medallion Architecture**
 - **Bronze (Raw):** Immutable source data from APIs and transactional systems
@@ -52,24 +62,19 @@ Key outcomes:
 
 ---
 
-## ⭐ Data Modeling
-### Fact Table: `fact_sales`
-- **Grain:** One row per `order_item`
-- **Measures:**
-  - Gross Sales
-  - Discount Amount
-  - Net Sales
-  - Returned Amount
-- **Logic:**
-  - Revenue adjusted based on returns and order status
-  - Promotions correctly applied at the line-item level
+## Data Modeling (Curated / Gold)
+
+The curated layer follows dimensional modeling principles and implements
+multiple star schemas for analytics use cases.
+
+### Fact Tables
+- `fact_orders` – Core sales and revenue analytics
+- `fact_competitor_prices` – Competitor pricing analysis
 
 ### Dimension Tables
-- `dim_customer`
-- `dim_product`
-- `dim_date`
-
-This design enables fast, consistent analytical queries without requiring analysts to join raw tables.
+- `dim_customers`
+- `dim_products`
+- `dim_promotion`
 
 ---
 
@@ -98,15 +103,17 @@ Implemented validation checks to ensure data accuracy:
 ---
 
 ## 📁 Repository Structure
+
+```text
 azure-ecommerce-data-engineering/
-│
 ├── architecture/
 ├── ingestion/
 ├── transformations/
 ├── modeling/
 ├── data_quality/
 ├── analytics/
-└── results/
+└── results/`
+```
 
 ## ▶️ How to Run This Project
 1. Ingest source data using Azure Data Factory pipelines
@@ -123,4 +130,10 @@ azure-ecommerce-data-engineering/
 ![Star Schema](architecture/star_schema.png)
 
 The curated analytics layer follows a star schema design with `fact_sales` as the central fact table and customer, product, and date dimensions.
+
+## Repository Navigation
+Each folder in this repository contains its own README.md describing
+the responsibilities, design decisions, and implementation details
+for that stage of the data pipeline.
+
 
