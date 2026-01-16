@@ -119,9 +119,8 @@ azure-ecommerce-data-engineering/
 - Late-arriving returns are handled during scheduled pipeline refreshes
 - Project focuses on batch processing rather than real-time streaming
 
+### ⭐ Star Schema (Analytics Layer)
+![Star Schema](architecture/star_schema.png)
 
-  E --> Q[Data Quality Checks<br/>Duplicates, nulls, RI]
-  G --> Q
-  B --> M[Monitoring / Logs]
-  D --> M
+The curated analytics layer follows a star schema design with `fact_sales` as the central fact table and customer, product, and date dimensions.
 
