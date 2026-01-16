@@ -1,23 +1,23 @@
-# Data Modeling (Curated / Gold Layer)
+# Curated Data Layer (Gold)
 
-This folder contains SQL scripts used to build analytics-ready
-fact and dimension tables in the curated (Gold) layer.
+This folder represents the curated datasets stored in
+Azure Data Lake Storage Gen2.
 
-The curated layer applies business logic and follows
-dimensional modeling principles (star schema).
+Curated tables are:
+- Business-ready
+- Analytics-optimized
+- Built using Spark SQL and Delta Lake
 
-## Fact Tables
-- `fact_orders` – Core sales and revenue analytics at order-item grain
-- `fact_sales` – Core sales and revenue analytics at order-item grain
--`fact_competitor_prices` – Core sales and revenue analytics at order-item grain
+## Tables Included
+- Fact Tables:
+  - `fact_orders`
+  - `fact_competitor_prices`
+  - `fact_sales`
 
-## Dimension Tables
-- `dim_customers`
-- `dim_products`
-- `dim_promotion`
+- Dimension Tables:
+  - `dim_customers`
+  - `dim_products`
+  - `dim_promotion`
 
-## Design Principles
-- Clear grain definition
-- Conformed dimensions
-- Optimized for analytical queries
-- Delta Lake storage format
+These datasets serve as the single source of truth
+for downstream analytics and reporting.
